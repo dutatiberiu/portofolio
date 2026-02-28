@@ -1,6 +1,6 @@
 # Duta Tiberiu — Portfolio
 
-Personal portfolio website built with pure HTML, CSS, and JavaScript. No frameworks, no dependencies — just clean, handcrafted code.
+Personal portfolio website built with  HTML, CSS, and JavaScript
 
 🌐 **Live:** [dutatiberiu.ro](https://dutatiberiu.ro)
 
@@ -10,7 +10,7 @@ Personal portfolio website built with pure HTML, CSS, and JavaScript. No framewo
 
 - HTML5
 - CSS3 (Custom Properties, Grid, Flexbox, Animations)
-- Vanilla JavaScript (ES6+)
+- JavaScript (ES6+)
 - [Web3Forms](https://web3forms.com) — contact form
 - GitHub Pages — hosting
 
