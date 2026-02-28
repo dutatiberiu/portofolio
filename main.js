@@ -111,20 +111,58 @@ mobileNav.querySelectorAll('a').forEach(link => {
 });
 
 // ============================================
-//   CONTACT FORM
+//   CONTACT FORM — Web3Forms
 // ============================================
 const contactForm = document.getElementById('contactForm');
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const btn = contactForm.querySelector('.submit-btn');
-  btn.textContent = 'Message Sent ✓';
-  btn.style.background = 'var(--accent-cool)';
-  setTimeout(() => {
-    btn.textContent = 'Send Message →';
-    btn.style.background = '';
-    contactForm.reset();
-  }, 3000);
+  const originalText = btn.textContent;
+
+  // Loading state
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  try {
+    const formData = new FormData(contactForm);
+    const payload = JSON.stringify(Object.fromEntries(formData));
+
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: payload
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = 'var(--accent-cool)';
+      btn.style.opacity = '1';
+      contactForm.reset();
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      throw new Error(result.message || 'Submission failed');
+    }
+  } catch (err) {
+    btn.textContent = 'Error — Try Again';
+    btn.style.background = '#e55';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+    }, 3000);
+  }
 }
 
 contactForm.addEventListener('submit', handleSubmit);
