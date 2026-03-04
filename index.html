@@ -4,13 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Duta Tiberiu — Front-End Developer din Braşov, România. Specializat în HTML, CSS și JavaScript. Portofoliu de proiecte web handcrafted.">
-<title>Duta Tiberiu</title>
+<meta name="robots" content="index, follow">
+<title>Duta Tiberiu — Front-End Developer</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dutatiberiu.ro/">
+<meta property="og:title" content="Duta Tiberiu — Front-End Developer">
+<meta property="og:description" content="Front-End Developer din Braşov, România. Specializat în HTML, CSS și JavaScript. Portofoliu de proiecte web handcrafted.">
+<meta property="og:image" content="https://www.dutatiberiu.ro/img/Tibi.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Duta Tiberiu — Front-End Developer">
+<meta name="twitter:description" content="Front-End Developer din Braşov, România. Specializat în HTML, CSS și JavaScript.">
+<meta name="twitter:image" content="https://www.dutatiberiu.ro/img/Tibi.png">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.dutatiberiu.ro/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b35'>DT</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- Custom Cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -33,7 +57,7 @@
 </nav>
 
 <!-- Mobile Nav -->
-<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
   <a href="#about">About</a>
   <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
@@ -57,7 +81,7 @@
     <p class="hero-subtitle" id="heroSubtitle"></p>
     <a href="#projects" class="hero-cta">
       View my work
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
         <path d="M5 12h14M12 5l7 7-7 7"/>
       </svg>
     </a>
@@ -89,7 +113,7 @@
         <span class="text-accent-warm">purpose &amp; soul</span>
       </h2>
       <p class="reveal reveal-delay-2">
-        I'm <span class="highlight">Tiberiu</span> — a Self‑Taught Front‑End Learner based in Braşov, Romania. I specialize in building responsive, handcrafted websites using <span class="highlight"> HTML, CSS, and JavaScript</span> — but open to learn new things and tehnologies.
+        I'm <span class="highlight">Tiberiu</span> — a Self‑Taught Front‑End Learner based in Braşov, Romania. I specialize in building responsive, handcrafted websites using <span class="highlight"> HTML, CSS, and JavaScript</span> — but open to learn new things and technologies.
       </p>
       <p class="reveal reveal-delay-3">
         From professional landing pages and brand identities to entertainment platforms that push boundaries << ok that project is personal but I can tell you about this another time>>, I try to bring an artistic vision to every project. I believe the best websites feels like personal experiences, not just pages.
@@ -113,7 +137,7 @@
         <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val"> learning for passion."</span>,</div>
         <div class="terminal-line">&nbsp;&nbsp;<span class="key">"passions"</span>: <span class="val">["Rock climbing",</span></div>
         <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"Chess",</span></div>
-        <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"Tehnology"]</span>,</div>
+        <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"Technology"]</span>,</div>
         <div class="terminal-line">&nbsp;&nbsp;<span class="comment">// always building something new</span></div>
         <div class="terminal-line">}</div>
       </div>
@@ -166,7 +190,7 @@
       <span class="project-number">03</span>
       <div class="project-tag">Client — Medical Landing Page</div>
       <div class="project-title">Alexandra Taropa — kinetotherapist</div>
-      <div class="project-desc">Professional landing page for a kinetotherapist in Braşov. Mobile-first design with smooth scroll animations, contact form integration, and a natural/professional aesthetic aligned with the healthcare brand, builded from scratch.</div>
+      <div class="project-desc">Professional landing page for a kinetotherapist in Braşov. Mobile-first design with smooth scroll animations, contact form integration, and a natural/professional aesthetic aligned with the healthcare brand, built from scratch.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span>
       </div>
@@ -193,6 +217,7 @@
       <div class="project-desc">A modern website redesign for a church in Braşov. Navigated legacy CMS constraints to deliver a clean, accessible design that serves the community. Balanced modern aesthetics with the warm, welcoming tone the congregation needed.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>CMS Integration</span>
+      </div>
       <a href="https://maretulhar.ro/" target="_blank" rel="noopener noreferrer" class="project-link">View Live →</a>
     </div>
   </div>
@@ -262,7 +287,7 @@
 
     <form class="contact-form reveal reveal-delay-3" id="contactForm">
       <input type="hidden" name="access_key" value="09c76f95-1088-497c-8f88-f53e27861afb">
-      <input type="hidden" name="subject" value="New message from portfolio — dutatiberiu.ro">
+      <input type="hidden" name="botcheck">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -288,7 +313,7 @@
       <span class="contact-email-label">Or email me directly</span>
       <a href="mailto:dutageorgetiberiu@gmail.com">
         dutageorgetiberiu@gmail.com
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
     </div>
   </div>
@@ -301,11 +326,53 @@
   <div class="footer-left"> Duta Tiberiu. Handcrafted with care.</div>
   <div class="footer-right">
     <a href="https://github.com/dutatiberiu" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/in/dutatiberiu/" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/dutatiberiu/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
 
+<!-- ============================================
+     PROJECT PREVIEW MODAL
+     ============================================ -->
+<div class="preview-modal" id="previewModal" aria-hidden="true" role="dialog" aria-label="Project preview">
+  <div class="preview-modal-inner">
+    <div class="preview-modal-bar">
+      <span class="preview-url" id="previewUrl"></span>
+      <div class="preview-modal-actions">
+        <a class="preview-open-btn" id="previewOpenBtn" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a>
+        <button class="preview-close-btn" id="previewClose" aria-label="Close preview">✕</button>
+      </div>
+    </div>
+    <div class="preview-frame-wrap">
+      <iframe id="previewFrame" src="" title="Project preview" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+      <div class="preview-blocked" id="previewBlocked">
+        <p>This site can't be embedded.</p>
+        <a class="preview-open-btn" id="previewBlockedLink" target="_blank" rel="noopener noreferrer">Open directly →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="main.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Duta Tiberiu",
+  "url": "https://www.dutatiberiu.ro",
+  "jobTitle": "Front-End Web Developer",
+  "email": "dutageorgetiberiu@gmail.com",
+  "sameAs": [
+    "https://github.com/dutatiberiu",
+    "https://www.linkedin.com/in/dutatiberiu/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Braşov",
+    "addressCountry": "RO"
+  }
+}
+</script>
 </body>
 </html>

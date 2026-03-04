@@ -1,32 +1,39 @@
 // ============================================
-//   CUSTOM CURSOR
+//   CUSTOM CURSOR (desktop/hover devices only)
 // ============================================
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
+if (window.matchMedia('(hover: hover)').matches) {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
+  let ringDirty = false;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX - 4 + 'px';
-  dot.style.top  = mouseY - 4 + 'px';
-});
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX - 4 + 'px';
+    dot.style.top  = mouseY - 4 + 'px';
+    ringDirty = true;
+  });
 
-function animateRing() {
-  ringX += (mouseX - ringX) * 0.15;
-  ringY += (mouseY - ringY) * 0.15;
-  ring.style.left = ringX - 18 + 'px';
-  ring.style.top  = ringY - 18 + 'px';
-  requestAnimationFrame(animateRing);
+  function animateRing() {
+    if (ringDirty || Math.abs(mouseX - ringX) > 0.5 || Math.abs(mouseY - ringY) > 0.5) {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = ringX - 18 + 'px';
+      ring.style.top  = ringY - 18 + 'px';
+      ringDirty = false;
+    }
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover detection for cursor ring enlargement
+  document.querySelectorAll('a, button, .project-card, .skill-chip').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+  });
 }
-animateRing();
-
-// Hover detection for cursor ring enlargement
-document.querySelectorAll('a, button, .project-card, .skill-chip').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-});
 
 // ============================================
 //   TYPING ANIMATION
@@ -82,14 +89,23 @@ const revealObserver = new IntersectionObserver((entries) => {
 reveals.forEach(el => revealObserver.observe(el));
 
 // ============================================
-//   PARALLAX
+//   PARALLAX (cached + rAF throttled)
 // ============================================
+const parallaxEls = [...document.querySelectorAll('.parallax-element')];
+let scrollTicking = false;
+
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  document.querySelectorAll('.parallax-element').forEach(el => {
-    const speed = parseFloat(el.dataset.speed) || 0.02;
-    el.style.transform = `translateY(${scrollY * speed * 100}px)`;
-  });
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      parallaxEls.forEach(el => {
+        const speed = parseFloat(el.dataset.speed) || 0.02;
+        el.style.transform = `translateY(${scrollY * speed * 100}px)`;
+      });
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
 });
 
 // ============================================
@@ -101,6 +117,7 @@ const mobileNav = document.getElementById('mobileNav');
 function toggleMobileNav() {
   const isOpen = mobileNav.classList.toggle('active');
   hamburger.setAttribute('aria-expanded', isOpen);
+  mobileNav.setAttribute('aria-hidden', !isOpen);
 }
 
 hamburger.addEventListener('click', toggleMobileNav);
@@ -168,22 +185,99 @@ async function handleSubmit(e) {
 contactForm.addEventListener('submit', handleSubmit);
 
 // ============================================
-//   SMOOTH SCROLL
+//   SMOOTH SCROLL (with fixed nav offset)
 // ============================================
+const navHeight = document.querySelector('nav').offsetHeight;
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({
+        top: target.offsetTop - navHeight - 16,
+        behavior: 'smooth'
+      });
     }
   });
 });
 
 // ============================================
-//   FOOTER YEAR (auto-update)
+//   SCROLL PROGRESS BAR
 // ============================================
-const yearEl = document.getElementById('year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  scrollProgress.style.width = pct + '%';
+}, { passive: true });
+
+// ============================================
+//   PROJECT PREVIEW MODAL
+// ============================================
+const previewModal  = document.getElementById('previewModal');
+const previewFrame  = document.getElementById('previewFrame');
+const previewUrl    = document.getElementById('previewUrl');
+const previewOpenBtn = document.getElementById('previewOpenBtn');
+const previewClose  = document.getElementById('previewClose');
+const previewBlocked = document.getElementById('previewBlocked');
+const previewBlockedLink = document.getElementById('previewBlockedLink');
+
+function openPreview(url) {
+  previewUrl.textContent = url;
+  previewOpenBtn.href = url;
+  previewBlockedLink.href = url;
+  previewBlocked.style.display = 'none';
+  previewFrame.style.display = 'block';
+  previewFrame.src = url;
+  previewModal.classList.add('open');
+  previewModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
+
+function closePreview() {
+  previewModal.classList.remove('open');
+  previewModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  // Reset iframe after transition
+  setTimeout(() => { previewFrame.src = ''; }, 300);
+}
+
+// Detect iframe load errors (sites that block embedding)
+previewFrame.addEventListener('load', () => {
+  try {
+    // Accessing contentDocument throws if cross-origin with X-Frame-Options deny
+    const doc = previewFrame.contentDocument;
+    if (!doc || doc.body.innerHTML === '') {
+      previewFrame.style.display = 'none';
+      previewBlocked.style.display = 'flex';
+    }
+  } catch (e) {
+    // Cross-origin — iframe loaded but we can't inspect; assume it worked
+  }
+});
+
+previewFrame.addEventListener('error', () => {
+  previewFrame.style.display = 'none';
+  previewBlocked.style.display = 'flex';
+});
+
+// Intercept project link clicks
+document.querySelectorAll('.project-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPreview(link.href);
+  });
+});
+
+previewClose.addEventListener('click', closePreview);
+
+// Close on overlay click (outside inner box)
+previewModal.addEventListener('click', (e) => {
+  if (e.target === previewModal) closePreview();
+});
+
+// Close on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && previewModal.classList.contains('open')) closePreview();
+});
