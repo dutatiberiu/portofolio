@@ -211,3 +211,74 @@ window.addEventListener('scroll', () => {
   const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
   scrollProgress.style.width = pct + '%';
 }, { passive: true });
+
+// ============================================
+//   HOVER PREVIEW TOOLTIP
+// ============================================
+if (window.matchMedia('(hover: hover)').matches) {
+  const hoverPreview    = document.getElementById('hoverPreview');
+  const hoverPreviewImg = document.getElementById('hoverPreviewImg');
+  const hoverPreviewLoading = document.getElementById('hoverPreviewLoading');
+  let hoverTimer = null;
+  let currentUrl = null;
+
+  function positionTooltip(card) {
+    const rect = card.getBoundingClientRect();
+    const w = 300, h = 220;
+    let left = rect.left + rect.width / 2 - w / 2;
+    let top  = rect.top - h - 12;
+
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    if (top < 8) top = rect.bottom + 12;
+
+    hoverPreview.style.left = left + 'px';
+    hoverPreview.style.top  = top  + 'px';
+  }
+
+  function showPreview(card) {
+    const url = card.dataset.preview;
+    if (!url) return;
+
+    positionTooltip(card);
+
+    // Only reload image if URL changed
+    if (url !== currentUrl) {
+      currentUrl = url;
+      hoverPreviewImg.classList.remove('loaded');
+      hoverPreviewImg.style.display = 'none';
+      hoverPreviewLoading.style.display = 'flex';
+
+      const src = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+
+      hoverPreviewImg.onload = () => {
+        hoverPreviewLoading.style.display = 'none';
+        hoverPreviewImg.style.display = 'block';
+        hoverPreviewImg.classList.add('loaded');
+      };
+      hoverPreviewImg.onerror = () => {
+        hoverPreview.classList.remove('visible');
+        currentUrl = null;
+      };
+      hoverPreviewImg.src = src;
+    }
+
+    hoverPreview.classList.add('visible');
+    hoverPreview.setAttribute('aria-hidden', 'false');
+  }
+
+  function hidePreview() {
+    clearTimeout(hoverTimer);
+    hoverPreview.classList.remove('visible');
+    hoverPreview.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('.project-card[data-preview]').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => showPreview(card), 700);
+    });
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      hidePreview();
+    });
+  });
+}

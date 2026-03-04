@@ -960,3 +960,53 @@ footer {
   transition: width 0.1s linear;
 }
 
+/* ============================================
+   HOVER PREVIEW TOOLTIP
+   ============================================ */
+.hover-preview {
+  position: fixed;
+  z-index: 1500;
+  width: 300px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 107, 53, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-preview.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.hover-preview-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 188px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.hover-preview img {
+  display: none;
+  width: 100%;
+  height: 188px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hover-preview img.loaded {
+  display: block;
+}
+
+@media (hover: none) {
+  .hover-preview { display: none; }
+}
+
