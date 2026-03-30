@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Duta Tiberiu — Frontend Developer din Braşov, România. Specializat în crearea de site-uri web. Portofoliu de proiecte.">
+<meta name="description" content="Duta Tiberiu — Frontend Developer din Braşov, România. Specializat în HTML, CSS, JavaScript, UI/UX și landing pages. Vezi proiectele mele web.">
 <meta name="robots" content="index, follow">
 <title>Duta Tiberiu — Frontend Developer</title>
 
@@ -11,13 +11,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.dutatiberiu.ro/">
 <meta property="og:title" content="Duta Tiberiu — Frontend Developer">
-<meta property="og:description" content="Frontend Developer din Braşov, România. Specializat în crearea de site-uri web. Portofoliu de proiecte.">
+<meta property="og:description" content="Frontend Developer din Braşov, România. Specializat în HTML, CSS, JavaScript, UI/UX și landing pages. Vezi proiectele mele web.">
 <meta property="og:image" content="https://www.dutatiberiu.ro/img/Tibi.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Duta Tiberiu — Frontend Developer">
-<meta name="twitter:description" content="Frontend Developer din Braşov, România. Specializat în crearea de site-uri web. Portofoliu de proiecte.">
+<meta name="twitter:description" content="Frontend Developer din Braşov, România. Specializat în HTML, CSS, JavaScript, UI/UX și landing pages.">
 <meta name="twitter:image" content="https://www.dutatiberiu.ro/img/Tibi.png">
 
 <!-- Canonical -->
@@ -26,6 +26,12 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='700' font-size='14' fill='%23ff6b35'>DT</text></svg>">
+
+<!-- Preload critical resources -->
+<link rel="preload" href="style.css" as="style">
+<link rel="preload" href="img/Tibi.png" as="image">
+<link rel="preload" href="main.js" as="script">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -162,7 +168,7 @@
     <div class="project-card card--warm reveal">
       <span class="project-number">01</span>
       <div class="project-tag">Entertainment Platform</div>
-      <div class="project-title">lowKey Stream</div>
+      <h3 class="project-title">lowKey Stream</h3>
       <div class="project-desc">A stealth movie streaming platform designed to operate around the filter of Zscaler. Dark, immersive UI with custom video player, and a fully responsive layout — all hosted on GitHub Pages with a named tunnel on a personal server.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>Cloudflare Tunnel</span>
@@ -176,7 +182,7 @@
     <div class="project-card card--electric reveal reveal-delay-1">
       <span class="project-number">02</span>
       <div class="project-tag">Music Application</div>
-      <div class="project-title">lowKey Player</div>
+      <h3 class="project-title">lowKey Player</h3>
       <div class="project-desc">A sleek music streaming application with curated playlists and smooth playback controls. Featuring a custom audio visualization — your personal stealth music companion.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span> 
@@ -190,7 +196,7 @@
     <div class="project-card card--cool reveal" data-preview="https://www.alexandrataropa.ro/">
       <span class="project-number">03</span>
       <div class="project-tag">Client — Medical Landing Page</div>
-      <div class="project-title">Alexandra Taropa — kinetotherapist</div>
+      <h3 class="project-title">Alexandra Taropa — kinetotherapist</h3>
       <div class="project-desc">Professional landing page for a kinetotherapist in Braşov. Mobile-first design with smooth scroll animations, contact form integration, and a natural/professional aesthetic aligned with the healthcare brand, built from scratch.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span>
@@ -202,7 +208,7 @@
     <div class="project-card card--yellow reveal reveal-delay-1" data-preview="https://dutatiberiu.github.io/We-Learn/">
       <span class="project-number">04</span>
       <div class="project-tag">Education Platform</div>
-      <div class="project-title">WeLearn Landing Page</div>
+      <h3 class="project-title">WeLearn Landing Page</h3>
       <div class="project-desc">An educational platform landing page designed with a modern, engaging interface. Clean layout with clear CTAs, feature highlights, and responsive design optimized for conversion and user engagement.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span>
@@ -214,7 +220,7 @@
     <div class="project-card card--blue reveal" data-preview="https://maretulhar.ro/">
       <span class="project-number">05</span>
       <div class="project-tag">Client — Church Redesign</div>
-      <div class="project-title">Biserica Măreţul Har — Website Redesign</div>
+      <h3 class="project-title">Biserica Măreţul Har — Website Redesign</h3>
       <div class="project-desc">A modern website redesign for a church in Braşov. Navigated legacy CMS constraints to deliver a clean, accessible design that serves the community. Balanced modern aesthetics with the warm, welcoming tone the congregation needed.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>CMS Integration</span>
@@ -226,7 +232,7 @@
     <div class="project-card card--electric reveal reveal-delay-1">
       <span class="project-number">06</span>
       <div class="project-tag">Interactive Gaming Platform</div>
-      <div class="project-title">Boardgame Arena</div>
+      <h3 class="project-title">Boardgame Arena</h3>
       <div class="project-desc">A browser-based gaming platform featuring four classic board games — Chess, Backgammon, Tic-Tac-Toe, and Checkers — all with different engines as opponents, and multiple difficulty levels.</div>
       <div class="project-tech">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span><span>WebAssembly</span>
@@ -349,20 +355,80 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Duta Tiberiu",
-  "url": "https://www.dutatiberiu.ro",
-  "jobTitle": "Frontend Developer",
-  "email": "dutageorgetiberiu@gmail.com",
-  "sameAs": [
-    "https://github.com/dutatiberiu",
-    "https://www.linkedin.com/in/dutatiberiu/"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Braşov",
-    "addressCountry": "RO"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.dutatiberiu.ro/#person",
+      "name": "Duta Tiberiu",
+      "url": "https://www.dutatiberiu.ro",
+      "jobTitle": "Frontend Developer",
+      "email": "dutageorgetiberiu@gmail.com",
+      "sameAs": [
+        "https://github.com/dutatiberiu",
+        "https://www.linkedin.com/in/dutatiberiu/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Braşov",
+        "addressCountry": "RO"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Portfolio Projects",
+      "description": "Selected web development projects by Duta Tiberiu",
+      "itemListElement": [
+        {
+          "@type": "CreativeWork",
+          "position": 1,
+          "name": "lowKey Stream",
+          "description": "A stealth movie streaming platform with custom video player, fully responsive layout, hosted on GitHub Pages with a Cloudflare Tunnel.",
+          "url": "https://dutatiberiu.github.io/lowKey-Stream/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "position": 2,
+          "name": "lowKey Player",
+          "description": "A sleek music streaming application with curated playlists, smooth playback controls, and custom audio visualization.",
+          "url": "https://dutatiberiu.github.io/lowKey-Player/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "position": 3,
+          "name": "Alexandra Taropa — kinetotherapist",
+          "description": "Professional landing page for a kinetotherapist in Braşov. Mobile-first design with smooth animations and contact form integration.",
+          "url": "https://www.alexandrataropa.ro/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "position": 4,
+          "name": "WeLearn Landing Page",
+          "description": "An educational platform landing page with modern interface, clear CTAs, and responsive design optimized for conversion.",
+          "url": "https://dutatiberiu.github.io/We-Learn/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "position": 5,
+          "name": "Biserica Măreţul Har — Website Redesign",
+          "description": "Modern website redesign for a church in Braşov, navigating legacy CMS constraints to deliver a clean, accessible design.",
+          "url": "https://maretulhar.ro/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        },
+        {
+          "@type": "CreativeWork",
+          "position": 6,
+          "name": "Boardgame Arena",
+          "description": "Browser-based gaming platform with Chess (Stockfish 18 AI), Backgammon, Tic-Tac-Toe, and Checkers. No backend, no installs.",
+          "url": "https://dutatiberiu.github.io/Boardgame-Arena/",
+          "author": { "@id": "https://www.dutatiberiu.ro/#person" }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </body>
