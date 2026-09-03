@@ -662,7 +662,11 @@ nav {
   border-color: var(--accent-warm);
   box-shadow: 0 0 0 1px var(--accent-warm);
 }
-.form-group textarea { resize: vertical; min-height: 140px; }
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  max-height: 18rem;
+}
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
